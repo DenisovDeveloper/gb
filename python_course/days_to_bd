@@ -1,0 +1,16 @@
+from datetime import datetime
+
+print("Введите день рождения в формате 'гггг-мм-дд': ")
+today = datetime.now()
+year, month, day = input().split("-")
+year, month, day = int(year), int(month), int(day)
+
+if month < today.month or month == today.month and day < today.day:
+    year = today.year + 1
+else:
+    year = today.year
+
+birthday = datetime(year, int(month), int(day))
+
+days_until_birthday = (birthday - today).days
+print(f"До дня рождения осталось {days_until_birthday} дней")

@@ -1,0 +1,8 @@
+import random
+print("Сколько попыток вы хотите сделать?")
+shots = int(input())
+
+for i in range(shots):
+    item = random.choice(["Орёл", "Решка"])
+    print(item)
+

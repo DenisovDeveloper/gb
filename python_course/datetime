@@ -1,0 +1,9 @@
+import datetime as dt
+
+print(dt.datetime.now())
+print(dt.datetime.now().time)
+print(dt.datetime.now().date)
+
+my_date = dt.date(2023, 11, 7)
+print(my_date)
+print(my_date.weekday())

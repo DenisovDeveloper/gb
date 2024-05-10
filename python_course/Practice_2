@@ -1,0 +1,17 @@
+#Программа выводит список покупок и итоговую сумму
+print("Введите количество покупок: ")
+n = int(input())
+prices = {}
+summa = 0
+for i in range(n):
+    print("Введите название покупки")
+    purchase = input()
+    print("Введите стоимость покупки")
+    cost = float(input())
+    prices[purchase] = cost
+    summa += cost
+
+for purch, cost in prices.items():
+    print(purch, '\t', cost)
+print("-" * 20)
+print("Итого: ", '\t', summa)

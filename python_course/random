@@ -1,0 +1,14 @@
+import random
+
+number = random.randint(1, 10)
+print(number)
+
+item = random.choice(["Эники", "Бэники", "Клёц"])
+print(item)
+
+my_list = ['yes', 'no', 'may be']
+item = random.choices(my_list, k=5)
+
+a = list(range(100))
+random.shuffle(a)
+print(a)

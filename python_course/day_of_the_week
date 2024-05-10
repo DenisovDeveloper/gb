@@ -1,0 +1,15 @@
+import datetime as dt
+
+print("Введите год: ")
+year = int(input())
+print("Введите месяц: ")
+month = int(input())
+print("Введите день: ")
+day = int(input())
+
+week = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
+
+my_date = dt.date(year, month, day)
+print(my_date)
+print(week[my_date.weekday()])
+

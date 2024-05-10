@@ -1,0 +1,4 @@
+def greet (name):
+    return f"Привет, {name}"
+message = greet("Алиса")
+print(message)

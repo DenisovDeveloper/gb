@@ -1,0 +1,28 @@
+import emoji
+
+def get_feeling(text):
+    positive_keywords = ["счастлив", "радост", "люб"]
+    negative_keywords = ["груст", "зл", "не нрав", "плох", "печаль"]
+    
+    words = text.split()
+
+    positive_count = 0
+    negative_count = 0
+
+    for word in words:
+        for pos_word in positive_keywords:
+            if pos_word in word:
+                positive_count += 1
+        for neg_word in negative_keywords:
+            if neg_word in word:
+                negative_count += 1
+
+    if positive_count > negative_count:
+        return emoji.emojize(":grinning_face:")
+    elif negative_count > positive_count:
+        return emoji.emojize(":sad_but_relieved_face:")
+    else: 
+        return emoji.emojize(":neutral_face:")
+
+text = input("Как настроение?")
+print("Настроение текста: ", get_feeling(text))

@@ -1,0 +1,12 @@
+from fuzzywuzzy import fuzz
+#from fuzzywuzzy import process
+
+print(fuzz.ratio("Python - это как второй родной язык для разработчика",
+          "Python - это как иностранный язык для новичка"))
+
+print(fuzz.ratio("Работает? Не трогай",
+          "Работает? Не трогай"))
+
+
+print(fuzz.ratio("Поиск бага - это как охота на тигра в темном лесу",
+          "Поиск бага - это как игра в прятки с ошибкой"))

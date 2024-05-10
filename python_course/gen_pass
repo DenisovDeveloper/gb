@@ -1,0 +1,14 @@
+import random
+from string import ascii_letters, digits
+
+
+def generate_password(length):
+    characters = ascii_letters + digits
+    password = ''
+    for i in range(length):
+        password += random.choice(characters)
+    return password
+    
+for i in range(5):
+    password = generate_password(8)
+    print(password)

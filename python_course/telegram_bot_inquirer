@@ -1,0 +1,42 @@
+from telegram.ext import Application, CommandHandler, ConversationHandler, filters, MessageHandler
+
+BOT_TOKEN = 'TOKEN'
+
+async def start(update, context):
+    await update.message.reply_text(
+        "Привет! Давайте проведем небольшой опрос\n"
+        "Вы можете остановить опрос, отправив команду /stop. \n"
+        "Как вас зовут?")
+    return 1
+
+async def first(update, context):
+    name = update.message.text
+    await update.message.reply_text(
+        f"{name}, какой ваш любимый язык программирования?")
+    return 2
+
+async def second(update, context):
+    language = update.message.text
+    await update.message.reply_text(
+        "Спасибо за участие в опросе! До свидания!")
+    return ConversationHandler.END
+
+
+async def stop(update, context):
+    await update.message.reply_text("До свидания!")
+    return ConversationHandler.END
+
+def main():
+    application = Application.builder().token(BOT_TOKEN).build()
+    conv_handler = ConversationHandler(
+        entry_points=[CommandHandler('start', start)],
+        states={
+            1: [MessageHandler(filters.TEXT & ~filters.COMMAND, first)],
+            2: [MessageHandler(filters.TEXT & ~filters.COMMAND, second)]
+        },
+        fallbacks=[CommandHandler('stop', stop)]
+    )
+    application.add_handler(conv_handler)
+    application.run_polling()
+
+main()

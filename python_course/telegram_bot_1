@@ -1,0 +1,29 @@
+from telegram.ext import Application, MessageHandler, filters, CommandHandler
+
+BOT_TOKEN = 'TOKEN'
+
+async def echo(update, context):
+    await update.message.reply_text(update.message.text)
+
+async def start(update, context):
+    await update.message.reply_text(
+        f"Привет, я эхо-бот. Напишите мне что-нибудь, и я отправлю этот текст в ответ"
+    )
+
+async def help_command(update, context):
+    await update.message.reply_text(
+        """Привет! я эхо-бот. Я повторяю текст, который вы мне отправляете. Вот список доступных команд:
+        /start - Начать взаимодействие с ботом.
+        /help - Получить справку и список доступных команд.
+        Просто отправьте мне любой текст и я повторю его"""
+    )
+
+def main():
+    app = Application.builder().token(BOT_TOKEN).build()
+    msg_handler = MessageHandler(filters.TEXT, echo)
+    app.add_handler(CommandHandler("help", help_command))
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(msg_handler)
+    app.run_polling()
+
+main()    
